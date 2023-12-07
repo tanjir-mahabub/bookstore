@@ -4,14 +4,18 @@ import './database';
 import { BookController } from './controller/BookController';
 import { AppDataSource } from './database';
 import log from './log';
+import { ScrapeController } from "./controller/ScrapeController";
+import { config as dotenvConfig } from "dotenv";
+
+dotenvConfig(); 
 
 const app = express();
-const port = 3000;
 
-app.use(express.json());
+const port = process.env.PORT || 3000;
 
-app.use("/books", BookController)
+app.use("/scrape", ScrapeController);
 
+app.use("/books", BookController);
 
 AppDataSource.initialize()
     .then(() => {
