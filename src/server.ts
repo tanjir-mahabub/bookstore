@@ -13,7 +13,7 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
-app.use("/scrape", ScrapeController);
+app.use(ScrapeController);
 
 app.use("/books", BookController);
 
