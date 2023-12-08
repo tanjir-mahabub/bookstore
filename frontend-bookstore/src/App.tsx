@@ -1,18 +1,14 @@
 import BookList from "./components/BookList"
+import Header from "./components/Header"
 
 const App = () => {
 
   return (
     <>
-      <div>
-        <h1 className="text-red-800 text-3xl">
-          BookStore App
-        </h1>
-
-        <div>
-          <BookList />
-        </div>
-      </div>
+      <section className="flex flex-col justify-center items-center">
+        <Header />
+        <BookList />
+      </section>
     </>
   )
 }

@@ -60,24 +60,25 @@ class ScrapeService {
     }
   }
 
-  async getData(): Promise<any[] | undefined> {
+  async getData(page: number = 1): Promise<any[] | undefined> {
     try {
       if (this.scrapeUrl && this.targetSelector) {
         const browser = await puppeteer.launch({ headless: "new" });
-        const page = await browser.newPage();
-        await page.setViewport({ width: 1280, height: 720 });
+        const pageInstance = await browser.newPage();
+        await pageInstance.setViewport({ width: 1280, height: 720 });
 
-        // Navigate to the desired website
-        await page.goto(this.scrapeUrl);
+        // Navigate to the desired website with the page parameter
+        const urlWithPage = `${this.scrapeUrl}&page=${page}`;
+        await pageInstance.goto(urlWithPage);
 
         // Wait for content to load
-        await page.waitForSelector(this.targetSelector);
+        await pageInstance.waitForSelector(this.targetSelector);
 
         // Auto scroll to load more content if needed
-        await this.autoScroll(page);
+        await this.autoScroll(pageInstance);
 
         // Get rendered HTML
-        const html = await page.content();
+        const html = await pageInstance.content();
 
         // Close browser
         await browser.close();

@@ -1,5 +1,5 @@
 import "reflect-metadata"
-import express from 'express';
+import express, { Request, Response } from 'express';
 import './database'; 
 import { BookController } from './controller/BookController';
 import { AppDataSource } from './database';
@@ -16,6 +16,11 @@ app.use(cors());
 const port = process.env.PORT || 3000;
 
 app.use(ScrapeController);
+
+app.get("/", (req: Request, res: Response) => {
+  res.send('Welcome')
+})
+
 
 app.use("/books", BookController);
 

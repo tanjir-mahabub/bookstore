@@ -9,6 +9,7 @@ dotenvConfig();
 
 const router: Router = express.Router();
 const ScrapeURL: string = process.env.SCRAPE_URL || "";
+const SCRAPE_PAGE: number = process.env.SCRAPE_PAGE ? parseInt(process.env.SCRAPE_PAGE, 10) : 5;
 
 const bookService = new BookService(AppDataSource);
 
@@ -25,24 +26,24 @@ router.get('/', async (req: Request, res: Response) => {
 
     if (!recordsExist) {
       const scraper = new ScrapeService(ScrapeURL);
-      const scrapedData: any[] | undefined = await scraper.getData();
-      
-      // Save the scraped data to the database
-      if(scrapedData) {
+      const totalPages = SCRAPE_PAGE; // Set the number of pages to scrape
 
-        let dataSaved = await bookService.saveBooks(scrapedData);
-        
-        if(!dataSaved) return false;
+      for (let page = 1; page <= totalPages; page++) {
+        const scrapedData: any[] | undefined = await scraper.getData(page);
 
-        log.magenta('Data scraped and saved to the database.');
+        // Save the scraped data to the database
+        if (scrapedData) {
+          let dataSaved = await bookService.saveBooks(scrapedData);
 
-        res.status(200).json({ message: 'Data scraped and saved to the database.', status: 200 });
+          if (!dataSaved) return false;
 
-      } else {
-
-        res.status(500).json({ message: 'Something wrong! Data saving failed', status: 500 });
-
+          log.magenta(`Data scraped and saved for page ${page}.`);
+        } else {
+          log.red(`Error: Failed to scrape data for page ${page}.`);
+        }
       }
+
+      res.status(200).json({ message: 'Data scraped and saved to the database.', status: 200 });
 
     } else {
 
@@ -57,6 +58,5 @@ router.get('/', async (req: Request, res: Response) => {
 
   }
 });
-
 
 export { router as ScrapeController };

@@ -7,12 +7,12 @@ const bookService = new BookService(AppDataSource);
 
 router.get('/', async (req: Request, res: Response) => {
   try {
-      const page = parseInt(req.query.page as string, 10) || 1;
-      const pageSize = parseInt(req.query.pageSize as string, 10) || 10;
+      const page = parseInt(req.query.page as string, 12) || 1;
+      const pageSize = parseInt(req.query.pageSize as string, 12) || 12;
 
       const books = await bookService.getAllBooks(page, pageSize);
       
-      (books.length > 0) ? res.status(200).json(books) : res.status(404).json({ message: "No book found!", status: 404 });
+      (books.length > 0) ? res.json(books) : res.json({ message: "No book found!" });
       
   } catch (error) {
       console.error(error);
