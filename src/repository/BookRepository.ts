@@ -9,9 +9,12 @@ class BookRepository {
     }
 
    // Get all books
-  async getAllBooks(): Promise<Book[]> {
-    return await this.bookRepository.find();
-  }
+   async getAllBooks(pageSize: number, skip: number): Promise<Book[]> {
+    return await this.bookRepository.find({
+        take: pageSize,
+        skip: skip,
+    });
+   }
 
   // Get a book by ID
   async getBookById(bookId: number): Promise<Book | null> {

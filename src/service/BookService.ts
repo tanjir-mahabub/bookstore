@@ -10,8 +10,9 @@ class BookService {
     }
 
     // Get all books
-    async getAllBooks(): Promise<Book[]> {
-        return await this.bookRepository.getAllBooks();
+    async getAllBooks(page: number = 1, pageSize: number = 10): Promise<Book[]> {
+        const skip = (page - 1) * pageSize;
+        return await this.bookRepository.getAllBooks(pageSize, skip);
     }
 
     // Get a book by ID
