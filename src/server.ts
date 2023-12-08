@@ -6,10 +6,12 @@ import { AppDataSource } from './database';
 import log from './log';
 import { ScrapeController } from "./controller/ScrapeController";
 import { config as dotenvConfig } from "dotenv";
+import cors from 'cors';
 
 dotenvConfig(); 
 
 const app = express();
+app.use(cors());
 
 const port = process.env.PORT || 3000;
 

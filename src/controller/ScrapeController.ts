@@ -1,7 +1,6 @@
 import express, { Request, Response, Router } from "express";
 import { ScrapeService } from "../service/ScrapeService";
 import { config as dotenvConfig } from "dotenv";
-import { Book } from "../entity/Book";
 import { AppDataSource } from "../database";
 import { BookService } from "../service/BookService";
 import log from "../log";
@@ -20,7 +19,7 @@ async function hasRecords(): Promise<boolean> {
 }
 
 // Express route for scraping data
-router.get('/', async (req, res) => {
+router.get('/', async (req: Request, res: Response) => {
   try {
     const recordsExist = await hasRecords();
 
