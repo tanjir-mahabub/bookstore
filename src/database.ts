@@ -1,21 +1,18 @@
 import { DataSource } from "typeorm";
 import { Book } from "./entity/Book";
-import { config as dotenvConfig } from "dotenv";
-
-dotenvConfig();
-
-const DB_PORT = process.env.DB_PORT && parseInt(process.env.DB_PORT, 10);
+import { DB_DATABASE, DB_HOST, DB_LOGGING, DB_PASSWORD, DB_PORT, DB_SYNCHRONIZE, DB_USERNAME } from "./config/constant";
+import { User } from "./entity/User";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: process.env.DB_HOST,
-  port: DB_PORT || 5432,
-  username: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-  synchronize: process.env.DB_SYNCHRONIZE === "true" || false,
-  logging: process.env.DB_LOGGING === "true" || false,
-  entities: [Book],
+  host: DB_HOST,
+  port: DB_PORT,
+  username: DB_USERNAME,
+  password: DB_PASSWORD,
+  database: DB_DATABASE,
+  synchronize: DB_SYNCHRONIZE,
+  logging: DB_LOGGING,
+  entities: [Book, User],
   subscribers: [],
   migrations: [],
 });

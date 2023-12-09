@@ -14,8 +14,7 @@ router.get('/', async (req: Request, res: Response) => {
       
       (books.length > 0) ? res.json(books) : res.json({ message: "No book found!" });
       
-  } catch (error) {
-      console.error(error);
+  } catch (error) {      
       return res.status(500).json({ error: 'Internal Server Error' });
   }
 });
@@ -36,8 +35,7 @@ router.get('/:id', async (req: Request, res: Response) => {
     }
 
     return res.json(book);
-  } catch (error) {
-    console.error(error);
+  } catch (error) {    
     return res.status(500).json({ message: 'Internal Server Error', status: 500 });
   }
 });

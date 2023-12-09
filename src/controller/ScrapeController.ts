@@ -1,15 +1,11 @@
 import express, { Request, Response, Router } from "express";
 import { ScrapeService } from "../service/ScrapeService";
-import { config as dotenvConfig } from "dotenv";
 import { AppDataSource } from "../database";
 import { BookService } from "../service/BookService";
 import log from "../log";
-
-dotenvConfig();
+import { SCRAPE_PAGE, SCRAPE_URL } from "../config/constant";
 
 const router: Router = express.Router();
-const ScrapeURL: string = process.env.SCRAPE_URL || "";
-const SCRAPE_PAGE: number = process.env.SCRAPE_PAGE ? parseInt(process.env.SCRAPE_PAGE, 10) : 5;
 
 const bookService = new BookService(AppDataSource);
 
@@ -25,7 +21,7 @@ router.get('/', async (req: Request, res: Response) => {
     const recordsExist = await hasRecords();
 
     if (!recordsExist) {
-      const scraper = new ScrapeService(ScrapeURL);
+      const scraper = new ScrapeService(SCRAPE_URL);
       const totalPages = SCRAPE_PAGE; // Set the number of pages to scrape
 
       for (let page = 1; page <= totalPages; page++) {

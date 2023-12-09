@@ -1,3 +1,4 @@
+import SignIn from "./user/SignIn"
 
 const Header = () => {
     return (
@@ -6,13 +7,13 @@ const Header = () => {
                 Amazing
             </div>
             <div className="text-white flex gap-4">
-                <div>
-                    Sign In
+                <div className="flex justify-center items-center h-full cursor-pointer hover:bg-white/20 rounded p-3">
+                    <SignIn />
                 </div>
-                <div>
+                <div className="flex justify-center items-center h-full cursor-pointer hover:bg-white/20 rounded p-3">
                     Sign Up
                 </div>
-                <div>
+                <div className="flex justify-center items-center h-full cursor-pointer hover:bg-white/20 rounded p-3">
                     Cart <span>(0)</span>
                 </div>
             </div>

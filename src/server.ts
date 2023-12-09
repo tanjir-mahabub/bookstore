@@ -5,22 +5,26 @@ import { BookController } from './controller/BookController';
 import { AppDataSource } from './database';
 import log from './log';
 import { ScrapeController } from "./controller/ScrapeController";
-import { config as dotenvConfig } from "dotenv";
 import cors from 'cors';
-
-dotenvConfig(); 
+import { PORT } from "./config/constant";
+import { UserController } from "./controller/UserController";
+import bodyParser from "body-parser";
 
 const app = express();
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+
 app.use(cors());
 
-const port = process.env.PORT || 3000;
+const port = PORT;
 
 app.use(ScrapeController);
+app.use(UserController)
 
 app.get("/", (req: Request, res: Response) => {
   res.send('Welcome')
 })
-
 
 app.use("/books", BookController);
 

@@ -62,11 +62,11 @@ const BookList = () => {
 
     return (
         <>
-            <div className="container-md mx-auto flex flex-col md:flex-row justify-center overflow-hidden">
+            <div className="container-md mx-auto flex flex-col md:flex-row justify-center items-center w-full h-full overflow-hidden">
                 <div className="md:w-[20%] border-r-2">Filter</div>
 
                 <div className='md:w-[80%] h-full border'>
-                    <div className="grid grid-cols-1 xl:grid-cols-2 3xl:grid-cols-3 h-full p-5 gap-3">
+                    <div className="grid grid-cols-1 xl:grid-cols-2 3xl:grid-cols-3 w-full h-full p-5 gap-3">
                         <BookCard books={books} />
                         <div ref={observerRef} />
 

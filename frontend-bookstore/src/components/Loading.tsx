@@ -1,8 +1,9 @@
+import Spinner from "./Spinner"
 
 const Loading = () => {
     return (
         <div className="flex justify-center items-center w-full h-screen">
-            <h1>Loading...</h1>
+            <Spinner />
         </div>
     )
 }
