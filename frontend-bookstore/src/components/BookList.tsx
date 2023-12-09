@@ -32,8 +32,7 @@ const BookList = () => {
                 setIsFirstCall(false);
             } else {
                 setNoData(true)
-                // Handle the case where newData is not an array (e.g., end of data)
-                console.log('No more data to fetch.');
+                // console.log('No more data to fetch.');
             }
         } catch (error) {
             console.error('Error fetching next page:', error);
