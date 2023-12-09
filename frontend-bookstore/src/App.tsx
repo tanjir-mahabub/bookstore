@@ -1,4 +1,4 @@
-import BookList from "./components/BookList"
+import BookList from "./components/BookList.tsx"
 import Header from "./components/Header"
 
 const App = () => {

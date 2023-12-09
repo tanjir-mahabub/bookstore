@@ -1,14 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-
-export interface Book {
-    id: number;
-    title: string;
-    writer: string;
-    coverImage: string;
-    point: number;
-    tags: string[];
-  }
+import { Book } from '../type/Book';
     
   interface ApiResponse {
     data: Book[];
