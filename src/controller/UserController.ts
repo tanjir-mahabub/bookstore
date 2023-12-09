@@ -8,6 +8,13 @@ const userService = new UserService(AppDataSource);
 
 router.post('/register', async (req: Request, res: Response) => {
   const { name, email, password } = req.body;
+
+  if (!name || !email || !password) {
+    return res.status(400).json({
+      message: 'Name, email, and password are required fields.',
+    });
+  }
+  
   try {
     const newUser = await userService.registerUser({name, email, password});    
     res.status(201).json(newUser);
@@ -21,6 +28,13 @@ router.post('/register', async (req: Request, res: Response) => {
 
 router.post('/login', async (req: Request, res: Response) => {
     const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({
+        message: 'Email and password are required fields.',
+      });
+    }
+
     try {
       const user = await userService.loginUser({ email, password });
       res.status(201).json(user);

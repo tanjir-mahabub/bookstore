@@ -19,7 +19,7 @@ const BookCard: React.FC<Books> = ({ books }) => {
                             <div className="h-[80%]">
                                 <h3 className="text-sm sm:text-base font-bold leading-0">{book.title}</h3>
                                 <small>by: <b>{book.writer}</b></small>
-                                <button className="bg-yellow-500 text-black border border-yellow-500 font-bold text-sm leading-0 px-2 pt-[3px] pb-[5px] flex justify-center items-center rounded hover:shadow-md hover:shadow-yellow-500/30 my-2">Buy Now</button>
+                                <button className="bg-yellow-500 text-black border border-yellow-500 font-bold text-sm leading-0 px-2 pt-[3px] pb-[5px] flex justify-center items-center rounded hover:shadow-md hover:shadow-yellow-500/30 my-2">Add to Cart</button>
                                 <p className="font-bold text-xs md:text-base">Price: ${book.point}</p>
                                 <small className='leading-1'><b>Tags:</b> {book.tags.join(', ')}</small>
                             </div>
