@@ -12,8 +12,8 @@ const Cart = () => {
 
     return (
         <>
-            <button type="button" onClick={openCart} className="relative flex justify-center items-center h-full cursor-pointer hover:bg-white/20 rounded p-3">
-                <img src={CartIcon} alt="cart-icon" className="w-6 h-6" /> <span className="w-5 h-5 flex justify-center items-center text-xs font-bold pr-[6px] rounded-full p-1 absolute right-[3px] top-[3px] bg-yellow-600">{cartQuantity}</span>
+            <button type="button" onClick={openCart} className="relative flex justify-start items-center h-full cursor-pointer hover:bg-white/20 pt-4 pb-2 pl-5 pr-6">
+                <img src={CartIcon} alt="cart-icon" className="w-6 h-6" /> <span className="w-5 h-5 flex justify-center items-center text-[13px] font-bold rounded-full px-[3px] pb-[2px] absolute right-[14px] top-[6px] bg-yellow-600">{cartQuantity}</span>
             </button>
             <div className={`fixed ${isOpen ? 'visible' : 'invisible'} flex left-0 top-0 justify-center items-center w-full h-full z-40 transition-all duration-500 overflow-hidden`}>
                 <div onClick={closeCart} className={`bg-black/80 w-full h-full absolute left-0 top-0 z-40 transition-opacity duration-500  ${isOpen ? 'opacity-100' : 'opacity-0'}`}></div>

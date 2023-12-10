@@ -51,22 +51,22 @@ const SignUpForm = () => {
                         />
                     </div>
                     <div className="flex flex-col gap-2">
-                        <label className="font-bold" htmlFor="email">Email</label>
+                        <label className="font-bold" htmlFor="Email">Email</label>
                         <input
                             className="border rounded w-full px-3 py-1.5"
                             type="email"
-                            id="email"
+                            id="Email"
                             placeholder="Email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
                     <div className="flex flex-col gap-2">
-                        <label className="font-bold" htmlFor="password">Password</label>
+                        <label className="font-bold" htmlFor="Password">Password</label>
                         <input
                             className="border rounded w-full px-3 py-1.5"
                             type="password"
-                            id="password"
+                            id="Password"
                             placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}

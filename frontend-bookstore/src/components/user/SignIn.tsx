@@ -9,7 +9,7 @@ const SignIn = () => {
 
     return (
         <>
-            <button type="button" onClick={handleClick} className="flex justify-center items-center h-full cursor-pointer hover:bg-white/20 rounded p-3">
+            <button type="button" onClick={handleClick} className="flex justify-center items-center h-full cursor-pointer hover:bg-white/20 p-3">
                 Sign In
             </button>
 
