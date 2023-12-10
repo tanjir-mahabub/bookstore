@@ -8,8 +8,8 @@ interface Books {
 
 const BookCard: React.FC<Books> = ({ books }) => {
     return (
-        <Suspense fallback={<Loading />}>
-            {books.length > 0 ? (
+        <>
+            {books.length > 0 && (
                 books?.map((book: Book) => (
                     <div className="grid grid-flow-col w-full h-full justify-start items-center border border-blue-800/20 p-3 shadow-sm hover:shadow-md hover:shadow-blue-800/30 rounded cursor-pointer gap-4 sm:gap-5" key={book.id}>
                         <div className='flex justify-center items-center w-full h-auto md:p-2'>
@@ -29,10 +29,8 @@ const BookCard: React.FC<Books> = ({ books }) => {
                         </div>
                     </div>
                 ))
-            ) : (
-                <p>No book found!</p>
             )}
-        </Suspense>
+        </>
     )
 }
 

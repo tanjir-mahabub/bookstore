@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { Book } from '../type/Book';
 import BookCard from './BookCard';
 import Spinner from './Spinner';
+import Loading from './Loading';
 
 const BookList = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -62,17 +63,22 @@ const BookList = () => {
 
     return (
         <>
-            <div className="container-md mx-auto flex flex-col md:flex-row justify-center items-center w-full h-full overflow-hidden">
-                <div className="md:w-[20%] border-r-2">Filter</div>
+            <div className="container mx-auto flex flex-col md:flex-row justify-center items-center w-full h-full px-7">
+                <div className="w-full md:w-[10vw] border-r-2">Filter</div>
 
-                <div className='md:w-[80%] h-full border'>
-                    <div className="grid grid-cols-1 xl:grid-cols-2 3xl:grid-cols-3 w-full h-full p-5 gap-3">
-                        <BookCard books={books} />
-                        <div ref={observerRef} />
+                <div className='w-full md:w-[90vw] h-full border'>
+                    {!loading ? (
+                        <div className="grid grid-cols-1 xl:grid-cols-2 3xl:grid-cols-3 w-full h-full p-5 gap-3">
+                            <BookCard books={books} />
+                            <div ref={observerRef} />
+                        </div>
+                    ) : (
+                        <div className="w-full">
+                            <Loading />
+                        </div>
+                    )}
 
-                    </div>
-
-                    {(!loading) &&
+                    {(loading) &&
                         <div className={`w-full h-14 ${!noData ? 'flex' : 'hidden'}`}>
                             <Spinner />
                         </div>
