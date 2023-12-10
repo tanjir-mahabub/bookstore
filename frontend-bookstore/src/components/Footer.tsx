@@ -28,7 +28,7 @@ const Footer = () => {
                 All rights reserved by Md Tanjir Mahabub
             </div>
 
-            <button onClick={scrollToTop} type="button" className="fixed bottom-10 right-5 flex justify-center items-center w-10 h-10 pb-1 bg-blue-800 text-white border border-blue-800 shadow animate-bounce rounded-full z-50" style={{ display: showButton ? 'block' : 'none' }}>
+            <button onClick={scrollToTop} type="button" className="fixed bottom-10 right-5 flex justify-center items-center w-10 h-10 pb-1 bg-blue-800 text-white border border-blue-800 shadow animate-bounce rounded-full z-40" style={{ display: showButton ? 'block' : 'none' }}>
                 Top
             </button>
         </div>

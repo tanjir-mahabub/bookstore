@@ -1,5 +1,4 @@
 import BookList from "./components/BookList.tsx"
-import Cart from "./components/Cart.tsx"
 import Footer from "./components/Footer.tsx"
 import Header from "./components/Header"
 
@@ -11,7 +10,6 @@ const App = () => {
         <Header />
         <main className="container mx-auto">
           <BookList />
-          <Cart />
         </main>
         <Footer />
       </section>

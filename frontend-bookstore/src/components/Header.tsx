@@ -1,3 +1,4 @@
+import Cart from "./Cart"
 import SignIn from "./user/SignIn"
 import SignUp from "./user/SignUp"
 
@@ -13,9 +14,7 @@ const Header = () => {
 
                     <SignUp />
 
-                    <div className="flex justify-center items-center h-full cursor-pointer hover:bg-white/20 rounded p-3">
-                        Cart <span>(0)</span>
-                    </div>
+                    <Cart />
                 </div>
             </div>
         </nav>
