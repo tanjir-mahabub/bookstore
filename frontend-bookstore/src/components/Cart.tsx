@@ -5,10 +5,11 @@ import { formatCurrency } from "../utilities/formatCurrency";
 import { useAuth } from "../hooks/useAuth";
 import { toast } from "react-toastify";
 import { CartItemProps } from "../type/Cart";
+import { API_URL } from "../utilities/constant";
 
 const Cart = () => {
     const { isAuthenticated } = useAuth();
-    const { cartItems, cartQuantity, addedToCart, resetCart, openCart, closeCart, isOpen } = useCartContext();
+    const { cartItems, cartQuantity, addedToCart, resetCart, openCart, closeCart, isOpen, orderCreated } = useCartContext();
 
     const createOrder = async (cart: CartItemProps[]) => {
         try {
@@ -22,19 +23,20 @@ const Cart = () => {
 
             const totalPrice = calculateTotalPrice(cart); // Calculate total points based on cart items
 
-            const response = await fetch('http://localhost:4000/order', {
+            const response = await fetch(`${API_URL}/order`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}` // Include the authentication token
+                    'Authorization': `Bearer ${token}`
                 },
-                body: JSON.stringify({ cart, totalPrice }), // Pass cart items and total points
+                body: JSON.stringify({ cart, totalPrice }),
             });
 
             if (response.ok) {
                 toast.success("Order created successfully", {
                     position: toast.POSITION.TOP_LEFT
                 });
+                orderCreated()
                 resetCart()
             } else {
                 toast.error("Sorry, Order not created!", {

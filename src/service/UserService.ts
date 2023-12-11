@@ -57,7 +57,7 @@ class UserService {
 
   private generateToken(userId: number): string {
     // Create a JWT token with the user ID
-    const token = jwt.sign({ userId }, JWT_SECRET, { expiresIn: '1m' });
+    const token = jwt.sign({ userId }, JWT_SECRET, { expiresIn: '1h' });
     return token;
   }
 

@@ -30,6 +30,8 @@ export interface CartContextProps {
     isOpen: boolean
     cartQuantity: number
     cartItems: CartItemProps[]
+    orderCreated: () => void
+    purchased: boolean
 }
 export interface CartItemProps {
     id: number,

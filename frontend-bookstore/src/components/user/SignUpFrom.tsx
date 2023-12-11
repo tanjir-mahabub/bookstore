@@ -1,6 +1,7 @@
 import { FormEvent, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { API_URL } from '../../utilities/constant';
 
 
 const SignUpForm = () => {
@@ -12,7 +13,7 @@ const SignUpForm = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:4000/register', {
+            const response = await axios.post(`${API_URL}/register`, {
                 name,
                 email,
                 password,

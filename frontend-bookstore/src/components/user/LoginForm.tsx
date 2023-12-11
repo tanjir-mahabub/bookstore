@@ -2,6 +2,7 @@ import { FormEvent, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useAuth } from '../../hooks/useAuth';
+import { API_URL } from '../../utilities/constant';
 
 const Login = () => {
     const { isAuthenticated, login } = useAuth();
@@ -12,7 +13,7 @@ const Login = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:4000/login', {
+            const response = await axios.post(`${API_URL}/login`, {
                 email,
                 password,
             });

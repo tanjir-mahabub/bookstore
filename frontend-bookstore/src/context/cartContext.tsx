@@ -19,6 +19,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         []
     );
 
+    const [purchased, setPurchased] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const openCart = () => setIsOpen(true)
     const closeCart = () => setIsOpen(false)
@@ -81,6 +82,10 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         0
     )
 
+    const orderCreated = () => {
+        setPurchased(true);
+    }
+
     return (
         <CartContext.Provider value={{
             addedToCart,
@@ -94,7 +99,9 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
             closeCart,
             cartItems,
             cartQuantity,
-            isOpen
+            isOpen,
+            orderCreated,
+            purchased
         }}>
             {children}
         </CartContext.Provider>

@@ -3,6 +3,9 @@ import { Book } from '../type/Book';
 import BookCard from './BookCard';
 import Spinner from './Spinner';
 import Loading from './Loading';
+import { API_URL } from '../utilities/constant';
+
+
 
 const BookList = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -23,7 +26,7 @@ const BookList = () => {
             setLoading(true);
 
             const nextPage = currentPage + 1;
-            const response = await fetch(`http://localhost:4000/books?page=${nextPage}`);
+            const response = await fetch(`${API_URL}/books?page=${nextPage}`);
             const newData = await response.json();
 
             if (Array.isArray(newData)) {
@@ -50,6 +53,7 @@ const BookList = () => {
                     fetchNextPage();
                 }
             });
+
         });
 
         if (observerRef.current) {

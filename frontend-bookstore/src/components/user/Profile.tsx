@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import PopUp from '../PopUp';
 import { formatCurrency } from '../../utilities/formatCurrency';
+import { API_URL } from '../../utilities/constant';
+import { useCartContext } from '../../context/cartContext';
 
 interface UserInfo {
     id: number,
@@ -12,6 +14,7 @@ interface UserInfo {
 const Profile: React.FC = () => {
     const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
     const [showPopup, setShowPopup] = useState(false);
+    const { purchased } = useCartContext();
 
     const handleClick = () => setShowPopup(true);
 
@@ -21,7 +24,7 @@ const Profile: React.FC = () => {
         if (token) {
             try {
 
-                fetch('http://localhost:4000/profile', {
+                fetch(`${API_URL}/profile`, {
                     method: 'GET',
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -36,7 +39,7 @@ const Profile: React.FC = () => {
                 console.error('Error decoding token:', error);
             }
         }
-    }, []);
+    }, [purchased]);
 
     return (
         <>
