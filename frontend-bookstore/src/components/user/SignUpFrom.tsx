@@ -19,11 +19,11 @@ const SignUpForm = () => {
             });
 
             response.data && toast.success("User Created Successfully !", {
-                position: toast.POSITION.TOP_RIGHT
+                position: toast.POSITION.TOP_LEFT
             });
         } catch (error: unknown) {
             toast.error("Registration Failure!", {
-                position: toast.POSITION.TOP_RIGHT
+                position: toast.POSITION.TOP_LEFT
             });
 
         }

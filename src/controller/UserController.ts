@@ -45,4 +45,21 @@ router.post('/login', async (req: Request, res: Response) => {
     }
   });
 
+  router.get('/profile', async (req: Request, res: Response) => {
+    try {
+        const auth = req.headers.authorization;
+        const token = auth?.split(" ")[1];
+        if(token) {
+          const user = await userService.userProfile(token);
+          res.status(200).json(user);
+        }
+        
+      } catch (error: unknown) {
+        (error instanceof Error) && res.status(404).json({        
+          message: error.message
+        });
+      }
+      
+  });
+
 export { router as UserController };

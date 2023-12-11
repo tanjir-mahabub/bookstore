@@ -10,6 +10,7 @@ import { PORT } from "./config/constant";
 import { UserController } from "./controller/UserController";
 import swaggerUi from 'swagger-ui-express';
 import swaggerConfig from './config/swaggerConfig';
+import { OrderController } from "./controller/OrderController";
 
 const app = express();
 
@@ -26,6 +27,7 @@ const port = PORT;
 
 app.use(ScrapeController);
 app.use(UserController)
+app.use(OrderController)
 
 app.get("/", (req: Request, res: Response) => {
   res.send('Welcome')

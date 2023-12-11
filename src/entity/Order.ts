@@ -1,27 +1,21 @@
-import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn, Column, CreateDateColumn } from 'typeorm';
-
-import { Book } from './Book';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDateColumn } from 'typeorm';
 import { User } from './User';
 
 @Entity()
 export class Order {
-    @PrimaryGeneratedColumn()
-    id!: number;
-  
-    @ManyToOne(() => User, (user) => user.orders)
-    @JoinColumn()
-    user!: User;
-  
-    @ManyToOne(() => Book, (book: any) => book.orders)
-    @JoinColumn()
-    book!: Book;
-  
-    @Column({ default: 1 }) 
-    quantity!: number;
-  
-    @Column({ type: 'decimal', precision: 10, scale: 2 })
-    totalPrice!: number;
-    
-    @CreateDateColumn({ type: 'timestamp' })
-    createdAt!: Date;
-  }
+  @PrimaryGeneratedColumn()
+  id!: number;
+
+  @ManyToOne(() => User, { eager: true, cascade: true })
+  @JoinColumn()
+  user!: User;
+
+  @Column('jsonb', { nullable: true })
+  cart!: { id: number; quantity: number }[];
+
+  @Column({ type: 'decimal', precision: 10, scale: 2 })
+  totalPrice!: number;
+
+  @CreateDateColumn({ type: 'timestamptz' }) 
+  createdAt!: Date;
+}

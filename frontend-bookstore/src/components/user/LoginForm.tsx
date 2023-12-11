@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useAuth } from '../../hooks/useAuth';
 
 const Login = () => {
@@ -18,14 +18,14 @@ const Login = () => {
             });
 
             toast.success("User login successfully", {
-                position: toast.POSITION.TOP_RIGHT
+                position: toast.POSITION.TOP_LEFT
             });
 
             login(response.data.token);
         } catch (error) {
 
             toast.error("Login failure!", {
-                position: toast.POSITION.TOP_RIGHT
+                position: toast.POSITION.TOP_LEFT
             });
             console.error(error);
         }

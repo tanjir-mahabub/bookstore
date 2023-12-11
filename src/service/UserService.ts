@@ -25,6 +25,17 @@ class UserService {
     return await this.userRepository.createUser({name, email, password: hashedPassword});
   }
 
+  async userProfile(token: string): Promise<User | null> {
+    const user = await this.verifyToken(token);    
+    const userInfo = await this.userRepository.findById(user);
+    
+    if(!userInfo) {
+      throw new Error('User not exists!')
+    }
+
+    return userInfo;
+  }
+
   async loginUser({ email, password }: LoginUserDTO): Promise<string | null> {
     const user = await this.userRepository.findByEmail(email);
 
@@ -46,7 +57,7 @@ class UserService {
 
   private generateToken(userId: number): string {
     // Create a JWT token with the user ID
-    const token = jwt.sign({ userId }, JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ userId }, JWT_SECRET, { expiresIn: '1m' });
     return token;
   }
 

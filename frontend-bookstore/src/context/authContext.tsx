@@ -14,9 +14,21 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            login(token);
+            const isTokenValid = checkTokenExpiration(token);
+            if (isTokenValid) {
+                login(token);
+            } else {
+                logout();
+            }
         }
     }, []);
+
+    const checkTokenExpiration = (token: string): boolean => {
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        const expirationTime = decodedToken.exp * 1000;
+        const isTokenValid = Date.now() < expirationTime;
+        return isTokenValid;
+    };
 
     const login = (token: string) => {
         localStorage.setItem('token', token);
