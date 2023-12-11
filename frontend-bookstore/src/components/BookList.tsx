@@ -64,7 +64,7 @@ const BookList = () => {
     return (
         <>
             <div className="container mx-auto flex flex-col md:flex-row justify-center items-center w-full h-full px-7">
-                <div className="w-full md:w-[10vw] border-r-2">Filter</div>
+                <div className="w-full md:w-[10vw] self-start py-5">Filter</div>
 
                 <div className='w-full md:w-[90vw] h-full border'>
                     {!loading ? (

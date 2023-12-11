@@ -8,9 +8,13 @@ import { ScrapeController } from "./controller/ScrapeController";
 import cors from 'cors';
 import { PORT } from "./config/constant";
 import { UserController } from "./controller/UserController";
-import bodyParser from "body-parser";
+import swaggerUi from 'swagger-ui-express';
+import swaggerConfig from './config/swaggerConfig';
 
 const app = express();
+
+// Swagger setup
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerConfig));
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
@@ -18,6 +22,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cors());
 
 const port = PORT;
+
 
 app.use(ScrapeController);
 app.use(UserController)

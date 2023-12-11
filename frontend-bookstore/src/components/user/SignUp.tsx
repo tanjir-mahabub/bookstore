@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PopUp from "../PopUp";
-import SignUpForm from "../SignUpFrom";
+import SignUpForm from "./SignUpFrom";
 
 const SignUp = () => {
     const [showPopup, setShowPopup] = useState(false);

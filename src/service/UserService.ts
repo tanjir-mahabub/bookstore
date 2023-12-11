@@ -16,9 +16,7 @@ class UserService {
   async registerUser({ name, email, password }: RegisterUserDTO): Promise<User> {
     const existingUser = await this.userRepository.findByEmail(email);
         
-    if (existingUser) {
-        // User with the given email already exists
-        console.log(existingUser);
+    if (existingUser) {       
         throw new Error('User already exists');
     }
 
@@ -33,8 +31,7 @@ class UserService {
     if (!user) {
         throw new Error('User not found');
       }
-
-      console.log("Not matched");
+      
     const passwordMatch = await bcrypt.compare(password, user.password);
     
     if (!passwordMatch) {
