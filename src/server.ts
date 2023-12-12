@@ -6,7 +6,7 @@ import { AppDataSource } from './database';
 import log from './log';
 import { ScrapeController } from "./controller/ScrapeController";
 import cors from 'cors';
-import { PORT } from "./config/constant";
+import { PORT, htmlPath } from "./config/constant";
 import { UserController } from "./controller/UserController";
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpec from './config/swaggerConfig';
@@ -30,7 +30,7 @@ app.use(UserController)
 app.use(OrderController)
 
 app.get("/", (req: Request, res: Response) => {
-  res.send('Welcome')
+  res.sendFile(htmlPath)
 })
 
 app.use("/books", BookController);

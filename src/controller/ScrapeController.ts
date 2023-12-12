@@ -3,7 +3,7 @@ import { ScrapeService } from "../service/ScrapeService";
 import { AppDataSource } from "../database";
 import { BookService } from "../service/BookService";
 import log from "../log";
-import { SCRAPE_PAGE, SCRAPE_URL } from "../config/constant";
+import { SCRAPE_PAGE, SCRAPE_URL, htmlPath } from "../config/constant";
 
 const router: Router = express.Router();
 
@@ -43,7 +43,7 @@ router.get('/', async (req: Request, res: Response) => {
 
     } else {
 
-      res.status(403).json({ message: 'Database already has data. Skipping scraping.', status: 403 });
+      res.sendFile(htmlPath)
 
     }
   } catch (error) {
