@@ -5,6 +5,8 @@ This book store app is created for testing purpose using Reactjs, tailwindcss, t
 ## Setup Guide
 
 ##### Backend Setup
+Create .env like as .env.example
+
 ```
     git clone
 
@@ -15,6 +17,8 @@ This book store app is created for testing purpose using Reactjs, tailwindcss, t
 ```
 
 ##### Frontend Setup
+Create .env like as .env.example from frontend-bookstore directory
+
 ```
     cd frontend-bookstore
 
