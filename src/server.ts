@@ -9,13 +9,13 @@ import cors from 'cors';
 import { PORT } from "./config/constant";
 import { UserController } from "./controller/UserController";
 import swaggerUi from 'swagger-ui-express';
-import swaggerConfig from './config/swaggerConfig';
+import swaggerSpec from './config/swaggerConfig';
 import { OrderController } from "./controller/OrderController";
 
 const app = express();
 
 // Swagger setup
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerConfig));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))

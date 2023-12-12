@@ -1,15 +1,10 @@
 import express, { Request, Response, Router } from "express";
 import { BookService } from '../service/BookService';
 import { AppDataSource } from "../database";
-import swaggerDocs from '../swagger/swaggerDocs';
 
 const router: Router = express.Router();
 const bookService = new BookService(AppDataSource);
 
-/**
- * @swagger
- * ${swaggerDocs}
- */
 router.get('/', async (req: Request, res: Response) => {
   try {
       const page = parseInt(req.query.page as string, 12) || 1;

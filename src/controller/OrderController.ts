@@ -7,7 +7,6 @@ const router = express.Router();
 const userService = new UserService(AppDataSource);
 const orderService = new OrderService(AppDataSource);
 
-
 router.post('/order', async (req: Request, res: Response) => {
     const cart = req.body;
     const auth = req.headers.authorization;
