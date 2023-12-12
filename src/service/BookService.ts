@@ -9,6 +9,11 @@ class BookService {
         this.bookRepository = new BookRepository(dataSource);
     }
 
+    // search a book
+    async searchBooks(searchQuery: string): Promise<Book[]> {
+        return await this.bookRepository.searchBooks(searchQuery);
+    }
+
     // Get all books
     async getAllBooks(page: number = 1, pageSize: number = 10): Promise<Book[]> {
         const skip = (page - 1) * pageSize;

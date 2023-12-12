@@ -1,4 +1,4 @@
-import { DataSource, Repository } from 'typeorm';
+import { DataSource, Like, Repository } from 'typeorm';
 import { Book } from '../entity/Book';
 
 class BookRepository {
@@ -6,6 +6,16 @@ class BookRepository {
 
     constructor(private readonly dataSource: DataSource) {
         this.bookRepository = dataSource.getRepository(Book);
+    }
+
+    // search book
+    async searchBooks(searchQuery: string): Promise<Book[]> {
+      return await this.bookRepository.find({
+        where: [
+          { title: Like(`%${searchQuery}%`) },
+          { writer: Like(`%${searchQuery}%`) },
+        ],
+      });
     }
 
    // Get all books

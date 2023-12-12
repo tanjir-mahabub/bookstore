@@ -40,6 +40,21 @@ router.get('/:id', async (req: Request, res: Response) => {
   }
 });
 
+// Search books
+router.get('/search', async (req: Request, res: Response) => {
+  try {
+    const searchQuery = req.query.q as string;
+    if (!searchQuery) {
+      return res.status(400).json({ error: 'Search query is required' });
+    }
+
+    const books = await bookService.searchBooks(searchQuery);
+    res.json(books);
+  } catch (error) {
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 
 
 export { router as BookController };

@@ -24,8 +24,8 @@ const App = () => {
         <main className="container mx-auto relative top-[50px]">
           <ToastContainer autoClose={3000} />
           {isLoading ? <PageLoader /> : <BookList />}
-          <Footer />
         </main>
+        <Footer />
       </section>
     </>
   );

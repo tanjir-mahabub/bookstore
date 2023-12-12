@@ -27,7 +27,8 @@
     "react-infinite-scroll-component": "^6.1.0",
     "reflect-metadata": "^0.1.13",
     "swagger-ui-express": "^5.0.0",
-    "typeorm": "^0.3.17"
+    "typeorm": "^0.3.17",
+    "typeorm-plus": "^0.1.2"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
