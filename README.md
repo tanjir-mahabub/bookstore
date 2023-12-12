@@ -10,6 +10,8 @@ Create .env like as .env.example
 ```
     git clone
 
+    cd bookstore
+    
     npm install
 
     npm run start:dev
