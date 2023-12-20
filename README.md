@@ -1,6 +1,6 @@
 # Amazing BookStore
 
-This book store app is created for testing purpose using Reactjs, tailwindcss, typescript, typeorm, postgres sql, swagger. 
+This book store app is created for testing purpose using Reactjs, tailwindcss, typescript, typeorm, postgres sql, swagger, expressjs, nodejs. 
 
 ## Setup Guide
 
